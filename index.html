@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kamera Testi</title>
+</head>
+<body>
+    <h1>Kamera İzni Testi</h1>
+    <p>Kamera ve mikrofon erişimi isteyecek.</p>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(function(stream) {
+            console.log("Kamera ve mikrofon izni verildi.");
+            const video = document.createElement('video');
+            video.srcObject = stream;
+            video.autoplay = true;
+            video.style.width = "320px";
+            document.body.appendChild(video);
+        })
+        .catch(function(err) {
+            console.error("Erişim reddedildi:", err);
+            alert("Kamera ve mikrofon izni reddedildi!");
+        });
+    </script>
+</body>
+</html>
